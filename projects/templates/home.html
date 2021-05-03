@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block content %}
+<section class="hero">
+    <h1>Freelance Web Designer in Brooklyn, New York</h1>
+  </section>   
+
+  <section class="projects">
+
+    {% for project in projects %}
+    <figure>
+        <img src ="{{ project.featured_image.url }}">
+
+        <figcaption>
+            <h3>{{ project.title }}</h3>
+
+            {{ project.description | safe }}
+            
+            <p><a href="{% url 'project' project.slug %}">View project</a></p>
+
+        </figcaption>
+    </figure>
+    {% endfor %}
+
+
+
+</figure>
+
+
+  </section>
+  
+
+
+{% endblock %}

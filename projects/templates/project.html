@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <section class="hero">
+        <h1>{{ project.title }}</h1>
+    </section>
+    
+<section class = "projects">
+    <figure>
+        <img src="{{ project.featured_image.url }}">
+        <figcaption>
+            {{ project.description | safe }}
+            <p>
+                <a href="{{ project.url }}" >View Project</a>
+            </p>
+        </figcaption>
+
+    </figure>
+
+</section>
+
+{% if project.viewable_assets.count > 0 %}
+<section class="assets">
+    {% for asset in project.viewable_assets %}
+    <figure>
+        <img src="{{ asset.image.url }}">
+        <figcaption>
+            {{ asset.caption }}
+        </figcaption>
+    </figure>
+    {% endfor %}
+
+</section> 
+{% endif %}
+
+
+{% if project.viewable_credits.count > 0 %}
+<section class="credits">
+    <h3>Credits</h3>
+    <div class="list">        
+      {% for credit in project.viewable_credits %}
+      <span class="role">{{ credit.role }}</span>
+      <span class="name">{{ credit.name }}</span>
+      {% endfor %}
+
+    </div>
+  </section>
+  {% endif %}
+
+
+
+<section class="prev-next">
+
+        <a href = "{% url 'project' prev_project.slug %}">
+            <h4>Previous Project</h4>
+            {{ prev_project.title }}
+            </a>
+
+        <a href = "{% url 'project' next_project.slug %}">
+            <h4>Next project</h4>
+            {{ next_project.title }}
+            </a>   
+
+</section>
+
+
+
+    
+   
+
+
+
+{% endblock %}

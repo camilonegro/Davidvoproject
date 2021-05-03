@@ -1,0 +1,30 @@
+{% load static %}
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Projects – David Vo</title>
+    
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+  </head>
+  <body>
+
+<header>
+<h1>David Vo</h1>
+<nav>
+    <a href="{% url 'home' %}">Home</a>
+    {% for nav_link in nav_links %}
+      <a href="{% url 'page' nav_link.slug %}">{{ nav_link.navigation_title }}</a>
+
+    {% endfor %}
+</nav>
+</header>
+
+{% block content %}
+{% endblock %}
+
+<script src="{% static 'header.js' %}"></script>
+<script src="{% static 'cursor.js' %}"></script>
+</body>
+</html>

@@ -35,7 +35,7 @@ DEBUG = env ("DEBUG")
 
 ALLOWED_HOSTS = []
 
-
+# TEST
 # Application definition
 
 INSTALLED_APPS = [
